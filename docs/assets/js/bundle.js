@@ -963,12 +963,12 @@ function getData() {
 }
 function _getData() {
   _getData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    var _tabela, response, texto, parser, doc, leitura, rodadas, _iterator, _step, rodada, _loop, i;
+    var tabela, response, texto, parser, doc, leitura, rodadas, _iterator, _step, rodada, _loop, i;
     return _regeneratorRuntime().wrap(function _callee$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
           _context2.prev = 0;
-          _tabela = [];
+          tabela = [];
           _context2.next = 4;
           return fetch('https://p1.trrsf.com/api/musa-soccer/ms-standings-games-light?idChampionship=1420&idPhase=&language=pt-BR&country=BR&nav=N&timezone=BR');
         case 4:
@@ -986,16 +986,14 @@ function _getData() {
           texto = _context2.sent;
           parser = new DOMParser();
           doc = parser.parseFromString(texto, 'text/html');
-          leitura = doc.querySelector('ul.rounds');
-          console.log(leitura);
-
+          leitura = doc.querySelector('ul.rounds'); // console.log(leitura);
           //Encontra as rodadas
           rodadas = doc.querySelectorAll('li.round .header-round'); //Adiciona um objeto em cada indice do array
           _iterator = _createForOfIteratorHelper(rodadas);
           try {
             for (_iterator.s(); !(_step = _iterator.n()).done;) {
               rodada = _step.value;
-              _tabela.push({
+              tabela.push({
                 rodada: rodada.innerText
               });
             }
@@ -1005,65 +1003,141 @@ function _getData() {
             _iterator.f();
           }
           _loop = /*#__PURE__*/_regeneratorRuntime().mark(function _loop(i) {
-            var rodadasData;
+            var rodadasJogos;
             return _regeneratorRuntime().wrap(function _loop$(_context) {
               while (1) switch (_context.prev = _context.next) {
                 case 0:
-                  console.log("#round-".concat(i));
-                  rodadasData = doc.querySelectorAll("#round-".concat(i, " .date-round"));
-                  if (_typeof(_tabela[i - 1].datas) !== 'object') {
-                    _tabela[i - 1].datas = {}; // Inicializa como um objeto vazio, caso não seja
+                  rodadasJogos = doc.querySelectorAll("#round-".concat(i, " .match"));
+                  if (_typeof(tabela[i - 1].partidas) !== 'object') {
+                    tabela[i - 1].partidas = {};
                   }
-                  console.log(rodadasData);
-                  rodadasData.forEach(function (value, key) {
-                    console.log('================');
-                    console.log(value.dataset.date);
-                    console.log(key);
-                    console.log(value.dataset.date);
-                    _tabela[i - 1].datas[key] = {
-                      data: value.dataset.date
+                  rodadasJogos.forEach(function (value, key) {
+                    var match = {
+                      confronto: value.querySelector('[itemprop="name"]').content,
+                      placar: '',
+                      data: value.querySelector('[itemprop="startDate"]').content,
+                      local: value.querySelector('[itemprop="location"] [itemprop="name"]').content,
+                      mandante: {
+                        nome: value.querySelector('a.shield.home').title,
+                        abreviacao: value.querySelector('a.shield.home .acronym').innerText,
+                        logo: value.querySelector('a.shield.home img').src,
+                        gols: value.querySelector('strong.goals.home').innerText
+                      },
+                      visitante: {
+                        nome: value.querySelector('a.shield.away').title,
+                        abreviacao: value.querySelector('a.shield.away .acronym').innerText,
+                        logo: value.querySelector('a.shield.away img').src,
+                        gols: value.querySelector('strong.goals.away').innerText
+                      }
+                    };
+
+                    // console.log(value.querySelector('a.shield.home img').src);
+
+                    tabela[i - 1].partidas[key] = {
+                      match: match
                     };
                   });
-
-                  // const a = 'aaaa'
-                  // tabela[0].data = {a};
-                case 5:
+                case 3:
                 case "end":
                   return _context.stop();
               }
             }, _loop);
           });
           i = 1;
-        case 20:
-          if (!(i < _tabela.length + 1)) {
-            _context2.next = 25;
+        case 19:
+          if (!(i < tabela.length + 1)) {
+            _context2.next = 24;
             break;
           }
-          return _context2.delegateYield(_loop(i), "t0", 22);
-        case 22:
+          return _context2.delegateYield(_loop(i), "t0", 21);
+        case 21:
           i++;
-          _context2.next = 20;
+          _context2.next = 19;
           break;
-        case 25:
-          console.log(_tabela);
-          return _context2.abrupt("return", _tabela);
-        case 29:
-          _context2.prev = 29;
+        case 24:
+          return _context2.abrupt("return", tabela);
+        case 27:
+          _context2.prev = 27;
           _context2.t1 = _context2["catch"](0);
           console.error('Erro:', _context2.t1);
-        case 32:
+        case 30:
           ;
-        case 33:
+        case 31:
         case "end":
           return _context2.stop();
       }
-    }, _callee, null, [[0, 29]]);
+    }, _callee, null, [[0, 27]]);
   }));
   return _getData.apply(this, arguments);
 }
 ;
-var tabela = document.querySelector('.tabela');
-var data = getData();
+function init() {
+  return _init.apply(this, arguments);
+}
+function _init() {
+  _init = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    var data;
+    return _regeneratorRuntime().wrap(function _callee2$(_context3) {
+      while (1) switch (_context3.prev = _context3.next) {
+        case 0:
+          _context3.next = 2;
+          return getData();
+        case 2:
+          data = _context3.sent;
+          console.log(data);
+          showTable(data[0], 2);
+        case 5:
+        case "end":
+          return _context3.stop();
+      }
+    }, _callee2);
+  }));
+  return _init.apply(this, arguments);
+}
+init();
+function showTable(tabela) {
+  var match = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var container = document.querySelector('.tabela');
+
+  //Configuração da BOX
+  var box = document.createElement('div');
+  box.setAttribute('class', "match");
+  box.setAttribute('match', "".concat(match));
+  var header = document.createElement('div');
+  var info = document.createElement('div');
+
+  //Header
+  var local = document.createElement('span');
+  local.innerText = tabela.partidas[match].match.local;
+  var data = document.createElement('span');
+  data.innerText = tabela.partidas[match].match.data;
+  data.innerText = data.innerText.split("-").reverse().join('/');
+
+  //Time 1
+  var time1_nome = document.createElement('span');
+  time1_nome.innerText = tabela.partidas[match].match.mandante.abreviacao;
+  var time1_logo = document.createElement('img');
+  time1_logo.setAttribute('src', tabela.partidas[match].match.mandante.logo);
+  var time1_gol = document.createElement('span');
+  time1_gol.innerText = tabela.partidas[match].match.mandante.gols;
+
+  //Time 2
+  var time2_nome = document.createElement('span');
+  time2_nome.innerText = tabela.partidas[match].match.visitante.abreviacao;
+  var time2_logo = document.createElement('img');
+  time2_logo.setAttribute('src', tabela.partidas[match].match.visitante.logo);
+  var time2_gol = document.createElement('span');
+  time2_gol.innerText = tabela.partidas[match].match.visitante.gols;
+
+  //Neutro
+  var x = document.createElement('span');
+  x.innerText = 'X';
+  header.append(data, local);
+  info.append(time1_nome, time1_logo, time1_gol, x, time2_gol, time2_logo, time2_nome);
+  box.appendChild(header);
+  box.appendChild(info);
+  container.appendChild(box);
+}
 })();
 
 /******/ })()
