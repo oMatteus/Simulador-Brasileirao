@@ -41,7 +41,7 @@ async function getData(){
                 const match = {
                     confronto: value.querySelector('[itemprop="name"]').content,
                     placar: '',
-                    data: value.querySelector('[itemprop="startDate"]').content,
+                    data: value.querySelector('[itemprop="startDate"]').content.split("-").reverse().join('/'),
                     local: value.querySelector('[itemprop="location"] [itemprop="name"]').content,
                     mandante : {
                         nome: value.querySelector('a.shield.home').title,
@@ -75,66 +75,94 @@ async function getData(){
 
 async function init(){
     const data = await getData()
-    console.log(data);
-    showTable(data[0],2)
+    // console.log(data);
+    showTable(data[0])
 }
 
 init()
 
 
-function showTable(tabela,match=0){
+function showTable(data){
 
-    const container = document.querySelector('.tabela');
+    const partidas = data.partidas
+    const slots = document.querySelectorAll('.box');
 
-    //Configuração da BOX
-    const box = document.createElement('div');
-    box.setAttribute('class',`match`)
-    box.setAttribute('match',`${match}`)
-    
-    const header = document.createElement('div');
-    const info = document.createElement('div');
+    slots.forEach((doc,key)=>{
 
-    //Header
-    const local = document.createElement('span');
-    local.innerText = tabela.partidas[match].match.local;
+        console.log(partidas[key]);
 
-    const data = document.createElement('span');
-    data.innerText = tabela.partidas[match].match.data;
-    data.innerText = data.innerText.split("-").reverse().join('/')
 
-    //Time 1
-    const time1_nome = document.createElement('span');
-    time1_nome.innerText = tabela.partidas[match].match.mandante.abreviacao;
+        doc.querySelector('.local').innerText = partidas[key].match.local
+        doc.querySelector('.data').innerText = partidas[key].match.data
 
-    const time1_logo = document.createElement('img');
-    time1_logo.setAttribute('src', tabela.partidas[match].match.mandante.logo)
+        doc.querySelector('.mandante-name').innerText = partidas[key].match.mandante.abreviacao
+        doc.querySelector('.mandante-logo').setAttribute('src', partidas[key].match.mandante.logo);
+        doc.querySelector('.mandante-gols').value = partidas[key].match.mandante.gols
 
-    const time1_gol = document.createElement('span');
-    time1_gol.innerText = tabela.partidas[match].match.mandante.gols;
 
-    //Time 2
-    const time2_nome = document.createElement('span');
-    time2_nome.innerText = tabela.partidas[match].match.visitante.abreviacao;
- 
-    const time2_logo = document.createElement('img');
-    time2_logo.setAttribute('src', tabela.partidas[match].match.visitante.logo)
+        doc.querySelector('.visitante-name').innerText = partidas[key].match.visitante.abreviacao
+        doc.querySelector('.visitante-logo').setAttribute('src', partidas[key].match.visitante.logo);
+        doc.querySelector('.visitante-gols').value = partidas[key].match.visitante.gols
+    })
 
-    const time2_gol = document.createElement('span');
-    time2_gol.innerText = tabela.partidas[match].match.visitante.gols;
-
-    //Neutro
-    const x = document.createElement('span');
-    x.innerText = 'X'
-
-    header.append(data,local);
-
-    info.append(time1_nome, time1_logo, time1_gol, x, time2_gol, time2_logo, time2_nome)
-  
-    box.appendChild(header)
-    box.appendChild(info)
-
-    container.appendChild(box)
 }
+
+// function showTable(tabela,match=0){
+
+//     const container = document.querySelector('.tabela');
+
+//     //Configuração da BOX
+//     const box = document.createElement('div');
+//     box.setAttribute('class',`match`)
+//     box.setAttribute('match',`${match}`)
+    
+//     const header = document.createElement('div');
+//     header.setAttribute('class',`header`)
+
+//     const info = document.createElement('div');
+//     info.setAttribute('class',`info`)
+
+//     //Header
+//     const local = document.createElement('p');
+//     local.innerText = tabela.partidas[match].match.local;
+
+//     const data = document.createElement('p');
+//     data.innerText = tabela.partidas[match].match.data;
+//     data.innerText = data.innerText.split("-").reverse().join('/')
+
+//     //Time 1
+//     const time1_nome = document.createElement('span');
+//     time1_nome.innerText = tabela.partidas[match].match.mandante.abreviacao;
+
+//     const time1_logo = document.createElement('img');
+//     time1_logo.setAttribute('src', tabela.partidas[match].match.mandante.logo)
+
+//     const time1_gol = document.createElement('span');
+//     time1_gol.innerText = tabela.partidas[match].match.mandante.gols;
+
+//     //Time 2
+//     const time2_nome = document.createElement('span');
+//     time2_nome.innerText = tabela.partidas[match].match.visitante.abreviacao;
+ 
+//     const time2_logo = document.createElement('img');
+//     time2_logo.setAttribute('src', tabela.partidas[match].match.visitante.logo)
+
+//     const time2_gol = document.createElement('span');
+//     time2_gol.innerText = tabela.partidas[match].match.visitante.gols;
+
+//     //Neutro
+//     const x = document.createElement('span');
+//     x.innerText = 'X'
+
+//     header.append(data,local);
+
+//     info.append(time1_nome, time1_logo, time1_gol, x, time2_gol, time2_logo, time2_nome)
+  
+//     box.appendChild(header)
+//     box.appendChild(info)
+
+//     container.appendChild(box)
+// }
 
 
 
