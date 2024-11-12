@@ -11,6 +11,12 @@
     outline: 0;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -64,10 +70,18 @@ p{
 }
 
 .info input{
-    width: 3rem; height: 3.5rem;
+    width: 3rem; height: 3rem;
     font-size: 2rem;
-    text-align: right;
+    text-align: center;
     padding: 0; margin: auto;
+}
+
+.info input:disabled{
+    background-color: inherit;
+    opacity: 100%;
+    border: none;
+    font-size: 3rem;
+    color: black;
 }
 
 

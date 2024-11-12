@@ -1,5 +1,35 @@
 import '../css/style.css';
 
+init()
+async function init(){
+    const data = await getData()
+    // console.log(data);
+
+    document.querySelector('.round').innerText = (`Rodada `+round)
+    showTable(data,round)
+}
+
+const controller = document.querySelector('.controller');
+let round = 1;
+controller.addEventListener('click',(e)=>{
+
+    const el = e.target;
+
+    
+    if(el.classList.contains('prevButton')){
+        if (round == 1) return
+        round--
+        init()
+    }
+
+    if(el.classList.contains('nextButton')){
+        if (round == 38) return
+        round++
+        init()
+    }
+})
+
+
 async function getData(){
 
     try{
@@ -73,96 +103,46 @@ async function getData(){
     };
 };
 
-async function init(){
-    const data = await getData()
-    // console.log(data);
-    showTable(data[0])
-}
+function showTable(data,round=1){
 
-init()
-
-
-function showTable(data){
-
+    data = data[round-1];
     const partidas = data.partidas
     const slots = document.querySelectorAll('.box');
 
     slots.forEach((doc,key)=>{
 
-        console.log(partidas[key]);
-
+        // console.log(partidas[key]);
 
         doc.querySelector('.local').innerText = partidas[key].match.local
         doc.querySelector('.data').innerText = partidas[key].match.data
 
         doc.querySelector('.mandante-name').innerText = partidas[key].match.mandante.abreviacao
         doc.querySelector('.mandante-logo').setAttribute('src', partidas[key].match.mandante.logo);
-        doc.querySelector('.mandante-gols').value = partidas[key].match.mandante.gols
+        if(partidas[key].match.mandante.gols){
+            doc.querySelector('.mandante-gols').value = partidas[key].match.mandante.gols
+            doc.querySelector('.mandante-gols').setAttribute('disabled','')
+        }else{
+            doc.querySelector('.mandante-gols').value = ''
+            doc.querySelector('.mandante-gols').removeAttribute('disabled','')
+        }
+        
 
 
         doc.querySelector('.visitante-name').innerText = partidas[key].match.visitante.abreviacao
         doc.querySelector('.visitante-logo').setAttribute('src', partidas[key].match.visitante.logo);
-        doc.querySelector('.visitante-gols').value = partidas[key].match.visitante.gols
+
+        if(partidas[key].match.mandante.gols){
+            doc.querySelector('.visitante-gols').value = partidas[key].match.visitante.gols
+            doc.querySelector('.visitante-gols').setAttribute('disabled','')
+        }else{
+            doc.querySelector('.visitante-gols').value = ''
+            doc.querySelector('.visitante-gols').removeAttribute('disabled','')
+        }
     })
 
 }
 
-// function showTable(tabela,match=0){
 
-//     const container = document.querySelector('.tabela');
-
-//     //Configuração da BOX
-//     const box = document.createElement('div');
-//     box.setAttribute('class',`match`)
-//     box.setAttribute('match',`${match}`)
-    
-//     const header = document.createElement('div');
-//     header.setAttribute('class',`header`)
-
-//     const info = document.createElement('div');
-//     info.setAttribute('class',`info`)
-
-//     //Header
-//     const local = document.createElement('p');
-//     local.innerText = tabela.partidas[match].match.local;
-
-//     const data = document.createElement('p');
-//     data.innerText = tabela.partidas[match].match.data;
-//     data.innerText = data.innerText.split("-").reverse().join('/')
-
-//     //Time 1
-//     const time1_nome = document.createElement('span');
-//     time1_nome.innerText = tabela.partidas[match].match.mandante.abreviacao;
-
-//     const time1_logo = document.createElement('img');
-//     time1_logo.setAttribute('src', tabela.partidas[match].match.mandante.logo)
-
-//     const time1_gol = document.createElement('span');
-//     time1_gol.innerText = tabela.partidas[match].match.mandante.gols;
-
-//     //Time 2
-//     const time2_nome = document.createElement('span');
-//     time2_nome.innerText = tabela.partidas[match].match.visitante.abreviacao;
- 
-//     const time2_logo = document.createElement('img');
-//     time2_logo.setAttribute('src', tabela.partidas[match].match.visitante.logo)
-
-//     const time2_gol = document.createElement('span');
-//     time2_gol.innerText = tabela.partidas[match].match.visitante.gols;
-
-//     //Neutro
-//     const x = document.createElement('span');
-//     x.innerText = 'X'
-
-//     header.append(data,local);
-
-//     info.append(time1_nome, time1_logo, time1_gol, x, time2_gol, time2_logo, time2_nome)
-  
-//     box.appendChild(header)
-//     box.appendChild(info)
-
-//     container.appendChild(box)
-// }
 
 
 
