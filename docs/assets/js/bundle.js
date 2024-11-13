@@ -67,7 +67,7 @@ p{
     border-bottom: 2px solid var(--primary-color);
 }
 
-.tabela{
+.matches{
     display: flex;
     flex-flow: row wrap;
     gap: 1rem;
@@ -76,38 +76,46 @@ p{
 .box{
     width: 30rem;
     background-color: aquamarine;
-    flex: 1 1 220px;
+    flex: 1 1 400px;
     padding: 1rem;
+
+    align-items: center; padding: auto; 
+
+    & .header{
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 1rem;
+
+        & .local{
+            
+        }
+    }
+
+    & .info{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        & img{
+            padding: 0 1rem;
+        }
+
+        & input{
+            width: 3rem; height: 3rem;
+            font-size: 2rem;
+            text-align: center;
+            padding: 0; margin: auto;
+        }
+
+        & input:disabled{
+            background-color: inherit;
+            opacity: 100%;
+            border: none;
+            font-size: 3rem;
+            color: black;
+        }
+    }
 }
-
-.box .header{
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.box .info{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.info input{
-    width: 3rem; height: 3rem;
-    font-size: 2rem;
-    text-align: center;
-    padding: 0; margin: auto;
-}
-
-.info input:disabled{
-    background-color: inherit;
-    opacity: 100%;
-    border: none;
-    font-size: 3rem;
-    color: black;
-}
-
-
-
 
 
 
@@ -142,7 +150,7 @@ p{
 
 @media (min-width: 505px) and (max-width: 900px){
 
-}`, "",{"version":3,"sources":["webpack://./src/assets/css/style.css"],"names":[],"mappings":"AAEA;IACI,iCAAiC;IACjC,sCAAsC;IACtC,gBAAgB;AACpB;;AAEA;IACI,sBAAsB;IACtB,UAAU;AACd;;AAEA;;IAEI,wBAAwB;IACxB,SAAS;AACb;;AAEA;IACI,SAAS;IACT,UAAU;IACV,sCAAsC;IACtC,uBAAuB;IACvB,iBAAiB;AACrB;;AAEA;IACI,SAAS;AACb;;AAEA;IACI,gBAAgB;IAChB,iBAAiB;IACjB,qBAAqB;IACrB,aAAa;IACb,mBAAmB;IACnB,kBAAkB;IAClB,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,aAAa,EAAE,gBAAgB;IAC/B,6CAA6C;AACjD;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,YAAY;IACZ,4BAA4B;IAC5B,eAAe;IACf,aAAa;AACjB;;AAEA;IACI,aAAa;IACb,6BAA6B;AACjC;;AAEA;IACI,aAAa;IACb,6BAA6B;IAC7B,mBAAmB;AACvB;;AAEA;IACI,WAAW,EAAE,YAAY;IACzB,eAAe;IACf,kBAAkB;IAClB,UAAU,EAAE,YAAY;AAC5B;;AAEA;IACI,yBAAyB;IACzB,aAAa;IACb,YAAY;IACZ,eAAe;IACf,YAAY;AAChB;;;;;;;;;AASA;IACI,YAAY,EAAE,aAAa;IAC3B,kBAAkB,EAAE,uBAAuB;IAC3C,6CAA6C;IAC7C,2CAA2C;EAC7C;;EAEA;IACE;MACE,oBAAoB;IACtB;IACA;MACE,yBAAyB;IAC3B;EACF;;;AAGF;;AAEA;;AAEA;;;;AAIA;;AAEA;;AAEA","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');\r\n\r\n:root{\r\n    --primary-color: rgb(17, 86, 102);\r\n    --primary-color-darker: rgb(9, 48, 56);\r\n    font-size: 62.5%;\r\n}\r\n\r\n*{\r\n    box-sizing: border-box; \r\n    outline: 0;\r\n}\r\n\r\ninput[type=\"number\"]::-webkit-outer-spin-button,\r\ninput[type=\"number\"]::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\nbody {\r\n    margin: 0;\r\n    padding: 0;\r\n    background-color: var(--primary-color);\r\n    font-family: sans-serif;\r\n    font-size: 2.5rem;\r\n}\r\n\r\np{\r\n    margin: 0;\r\n}\r\n\r\n.container{\r\n    max-width: 85rem;\r\n    margin: 3rem auto;\r\n    background-color:#fff;\r\n    padding: 1rem;\r\n    border-radius: 1rem;\r\n    overflow-y: hidden;\r\n    filter: none;\r\n}\r\n\r\n.container h1 {\r\n    text-align: center;\r\n    margin-top: 0; margin-bottom: 0;\r\n    border-bottom: 2px solid var(--primary-color);\r\n}\r\n\r\n.tabela{\r\n    display: flex;\r\n    flex-flow: row wrap;\r\n    gap: 1rem;\r\n}\r\n\r\n.box{\r\n    width: 30rem;\r\n    background-color: aquamarine;\r\n    flex: 1 1 220px;\r\n    padding: 1rem;\r\n}\r\n\r\n.box .header{\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n}\r\n\r\n.box .info{\r\n    display: flex;\r\n    justify-content: space-evenly;\r\n    align-items: center;\r\n}\r\n\r\n.info input{\r\n    width: 3rem; height: 3rem;\r\n    font-size: 2rem;\r\n    text-align: center;\r\n    padding: 0; margin: auto;\r\n}\r\n\r\n.info input:disabled{\r\n    background-color: inherit;\r\n    opacity: 100%;\r\n    border: none;\r\n    font-size: 3rem;\r\n    color: black;\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.loader-circle {\r\n    width: 100px; height: 100px;\r\n    border-radius: 50%; border: 10px solid #fff;\r\n    border-top-color: var(--primary-color-darker);\r\n    animation: loader-circle 1s linear infinite;\r\n  }\r\n  \r\n  @keyframes loader-circle {\r\n    0% {\r\n      transform: rotate(0);\r\n    }\r\n    100% {\r\n      transform: rotate(360deg);\r\n    }\r\n  }\r\n\r\n\r\n@media (max-width: 368px){\r\n    \r\n}\r\n\r\n@media (min-width: 369px) and (max-width: 504px){\r\n\r\n\r\n\r\n}\r\n\r\n@media (min-width: 505px) and (max-width: 900px){\r\n\r\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/assets/css/style.css"],"names":[],"mappings":"AAEA;IACI,iCAAiC;IACjC,sCAAsC;IACtC,gBAAgB;AACpB;;AAEA;IACI,sBAAsB;IACtB,UAAU;AACd;;AAEA;;IAEI,wBAAwB;IACxB,SAAS;AACb;;AAEA;IACI,SAAS;IACT,UAAU;IACV,sCAAsC;IACtC,uBAAuB;IACvB,iBAAiB;AACrB;;AAEA;IACI,SAAS;AACb;;AAEA;IACI,gBAAgB;IAChB,iBAAiB;IACjB,qBAAqB;IACrB,aAAa;IACb,mBAAmB;IACnB,kBAAkB;IAClB,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,aAAa,EAAE,gBAAgB;IAC/B,6CAA6C;AACjD;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,YAAY;IACZ,4BAA4B;IAC5B,eAAe;IACf,aAAa;;IAEb,mBAAmB,EAAE,aAAa;;IAElC;QACI,aAAa;QACb,6BAA6B;QAC7B,mBAAmB;;QAEnB;;QAEA;IACJ;;IAEA;QACI,aAAa;QACb,6BAA6B;QAC7B,mBAAmB;;QAEnB;YACI,eAAe;QACnB;;QAEA;YACI,WAAW,EAAE,YAAY;YACzB,eAAe;YACf,kBAAkB;YAClB,UAAU,EAAE,YAAY;QAC5B;;QAEA;YACI,yBAAyB;YACzB,aAAa;YACb,YAAY;YACZ,eAAe;YACf,YAAY;QAChB;IACJ;AACJ;;;;;;AAMA;IACI,YAAY,EAAE,aAAa;IAC3B,kBAAkB,EAAE,uBAAuB;IAC3C,6CAA6C;IAC7C,2CAA2C;EAC7C;;EAEA;IACE;MACE,oBAAoB;IACtB;IACA;MACE,yBAAyB;IAC3B;EACF;;;AAGF;;AAEA;;AAEA;;;;AAIA;;AAEA;;AAEA","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');\r\n\r\n:root{\r\n    --primary-color: rgb(17, 86, 102);\r\n    --primary-color-darker: rgb(9, 48, 56);\r\n    font-size: 62.5%;\r\n}\r\n\r\n*{\r\n    box-sizing: border-box; \r\n    outline: 0;\r\n}\r\n\r\ninput[type=\"number\"]::-webkit-outer-spin-button,\r\ninput[type=\"number\"]::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\nbody {\r\n    margin: 0;\r\n    padding: 0;\r\n    background-color: var(--primary-color);\r\n    font-family: sans-serif;\r\n    font-size: 2.5rem;\r\n}\r\n\r\np{\r\n    margin: 0;\r\n}\r\n\r\n.container{\r\n    max-width: 85rem;\r\n    margin: 3rem auto;\r\n    background-color:#fff;\r\n    padding: 1rem;\r\n    border-radius: 1rem;\r\n    overflow-y: hidden;\r\n    filter: none;\r\n}\r\n\r\n.container h1 {\r\n    text-align: center;\r\n    margin-top: 0; margin-bottom: 0;\r\n    border-bottom: 2px solid var(--primary-color);\r\n}\r\n\r\n.matches{\r\n    display: flex;\r\n    flex-flow: row wrap;\r\n    gap: 1rem;\r\n}\r\n\r\n.box{\r\n    width: 30rem;\r\n    background-color: aquamarine;\r\n    flex: 1 1 400px;\r\n    padding: 1rem;\r\n\r\n    align-items: center; padding: auto; \r\n\r\n    & .header{\r\n        display: flex;\r\n        justify-content: space-evenly;\r\n        margin-bottom: 1rem;\r\n\r\n        & .local{\r\n            \r\n        }\r\n    }\r\n\r\n    & .info{\r\n        display: flex;\r\n        justify-content: space-evenly;\r\n        align-items: center;\r\n\r\n        & img{\r\n            padding: 0 1rem;\r\n        }\r\n\r\n        & input{\r\n            width: 3rem; height: 3rem;\r\n            font-size: 2rem;\r\n            text-align: center;\r\n            padding: 0; margin: auto;\r\n        }\r\n\r\n        & input:disabled{\r\n            background-color: inherit;\r\n            opacity: 100%;\r\n            border: none;\r\n            font-size: 3rem;\r\n            color: black;\r\n        }\r\n    }\r\n}\r\n\r\n\r\n\r\n\r\n\r\n.loader-circle {\r\n    width: 100px; height: 100px;\r\n    border-radius: 50%; border: 10px solid #fff;\r\n    border-top-color: var(--primary-color-darker);\r\n    animation: loader-circle 1s linear infinite;\r\n  }\r\n  \r\n  @keyframes loader-circle {\r\n    0% {\r\n      transform: rotate(0);\r\n    }\r\n    100% {\r\n      transform: rotate(360deg);\r\n    }\r\n  }\r\n\r\n\r\n@media (max-width: 368px){\r\n    \r\n}\r\n\r\n@media (min-width: 369px) and (max-width: 504px){\r\n\r\n\r\n\r\n}\r\n\r\n@media (min-width: 505px) and (max-width: 900px){\r\n\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -693,8 +701,20 @@ function _init() {
           // console.log(data);
 
           document.querySelector('.round').innerText = "Rodada " + round;
-          showTable(data, round);
-        case 5:
+          document.querySelector('.round').setAttribute('round', +round);
+          renderMatch(data, round);
+          document.querySelector('.matches').addEventListener('input', function (e) {
+            var elementoPai = e.target.parentElement;
+            var confronto = elementoPai.parentElement.attributes.match.value;
+            var simulacao = {
+              rodada: document.querySelector('.round').attributes.round.value,
+              confronto: confronto,
+              mandanteGols: elementoPai.children[2].value,
+              visitanteGols: elementoPai.children[4].value
+            };
+            console.log(simulacao);
+          });
+        case 7:
         case "end":
           return _context.stop();
       }
@@ -703,7 +723,7 @@ function _init() {
   return _init.apply(this, arguments);
 }
 var controller = document.querySelector('.controller');
-var round = 1;
+var round = 19;
 controller.addEventListener('click', function (e) {
   var el = e.target;
   if (el.classList.contains('prevButton')) {
@@ -717,6 +737,7 @@ controller.addEventListener('click', function (e) {
     init();
   }
 });
+function inputListener() {}
 function getData() {
   return _getData.apply(this, arguments);
 }
@@ -830,7 +851,7 @@ function _getData() {
   return _getData.apply(this, arguments);
 }
 ;
-function showTable(data) {
+function renderMatch(data) {
   var round = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
   data = data[round - 1];
   var partidas = data.partidas;
@@ -838,6 +859,7 @@ function showTable(data) {
   slots.forEach(function (doc, key) {
     // console.log(partidas[key]);
 
+    doc.setAttribute('match', partidas[key].match.confronto);
     doc.querySelector('.local').innerText = partidas[key].match.local;
     doc.querySelector('.data').innerText = partidas[key].match.data;
     doc.querySelector('.mandante-name').innerText = partidas[key].match.mandante.abreviacao;

@@ -5,17 +5,32 @@ async function init(){
     const data = await getData()
     // console.log(data);
 
-    document.querySelector('.round').innerText = (`Rodada `+round)
-    showTable(data,round)
+    document.querySelector('.round').innerText = (`Rodada `+round);
+    document.querySelector('.round').setAttribute('round',+round);
+
+    renderMatch(data,round)
+
+    document.querySelector('.matches').addEventListener('input',(e)=>{
+        const elementoPai = e.target.parentElement;
+        const confronto = elementoPai.parentElement.attributes.match.value
+        
+        let simulacao = {
+            rodada: document.querySelector('.round').attributes.round.value,
+            confronto: confronto,
+            mandanteGols: elementoPai.children[2].value,
+            visitanteGols: elementoPai.children[4].value
+        };
+
+        console.log(simulacao);
+    })
 }
 
 const controller = document.querySelector('.controller');
-let round = 1;
+let round = 19;
 controller.addEventListener('click',(e)=>{
 
     const el = e.target;
 
-    
     if(el.classList.contains('prevButton')){
         if (round == 1) return
         round--
@@ -29,6 +44,9 @@ controller.addEventListener('click',(e)=>{
     }
 })
 
+function inputListener(){
+    
+}
 
 async function getData(){
 
@@ -103,7 +121,7 @@ async function getData(){
     };
 };
 
-function showTable(data,round=1){
+function renderMatch(data,round=1){
 
     data = data[round-1];
     const partidas = data.partidas
@@ -112,6 +130,8 @@ function showTable(data,round=1){
     slots.forEach((doc,key)=>{
 
         // console.log(partidas[key]);
+
+        doc.setAttribute('match', partidas[key].match.confronto)
 
         doc.querySelector('.local').innerText = partidas[key].match.local
         doc.querySelector('.data').innerText = partidas[key].match.data
