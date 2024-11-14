@@ -2,6 +2,283 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/assets/js/main.js":
+/*!*******************************!*\
+  !*** ./src/assets/js/main.js ***!
+  \*******************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/style.css */ "./src/assets/css/style.css");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+
+
+//Rodada exibida
+var round = 34;
+
+//Coletando dados
+var responseAPI = await getData();
+var dadosGlobais = {
+  full: responseAPI,
+  "short": optimizeData(responseAPI)
+};
+
+//Inicia o código para exibição dos jogos
+loadMatches();
+
+//Funções
+function loadMatches() {
+  return _loadMatches.apply(this, arguments);
+}
+function _loadMatches() {
+  _loadMatches = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    var data;
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          data = dadosGlobais.full;
+          document.querySelector('.round').innerText = "Rodada " + round;
+          document.querySelector('.round').setAttribute('round', +round);
+          renderMatches(data, round);
+          geraTable(data);
+        case 5:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee);
+  }));
+  return _loadMatches.apply(this, arguments);
+}
+function geraTable(dadosOriginais, DadosSimulados) {
+  // Clube | PTS | PJ | Vit | Emp | Der | GM| GS | SG
+
+  var dados = optimizeData(dadosOriginais);
+
+  // console.log(dados);
+
+  var tabela = document.createElement('table');
+  tabela.appendChild(document.createElement('table'));
+}
+function optimizeData(dados) {
+  var dadosOtimizados = [];
+  dados.forEach(function (value, key) {
+    // console.log(value);
+
+    for (var info in value.partidas) {
+      var obj = {
+        rodada: value.rodada,
+        confronto: value.partidas[info].match.confronto,
+        mandante: value.partidas[info].match.mandante.nome,
+        mandanteGols: value.partidas[info].match.mandante.gols,
+        visitante: value.partidas[info].match.visitante.nome,
+        visitanteGols: value.partidas[info].match.visitante.gols
+      };
+
+      // console.log(value.partidas[info].match);
+      dadosOtimizados.push(obj);
+    }
+  });
+
+  // console.log(dadosOtimizados);
+
+  return dadosOtimizados;
+}
+function getData() {
+  return _getData.apply(this, arguments);
+}
+function _getData() {
+  _getData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    var tabela, response, texto, parser, doc, leitura, rodadas, _iterator, _step, rodada, _loop, i;
+    return _regeneratorRuntime().wrap(function _callee2$(_context3) {
+      while (1) switch (_context3.prev = _context3.next) {
+        case 0:
+          _context3.prev = 0;
+          tabela = [];
+          _context3.next = 4;
+          return fetch('https://p1.trrsf.com/api/musa-soccer/ms-standings-games-light?idChampionship=1420&idPhase=&language=pt-BR&country=BR&nav=N&timezone=BR');
+        case 4:
+          response = _context3.sent;
+          if (response.ok) {
+            _context3.next = 7;
+            break;
+          }
+          throw new Error('Dados nao encontrados');
+        case 7:
+          ;
+          _context3.next = 10;
+          return response.text();
+        case 10:
+          texto = _context3.sent;
+          parser = new DOMParser();
+          doc = parser.parseFromString(texto, 'text/html');
+          leitura = doc.querySelector('ul.rounds'); // console.log(leitura);
+          //Encontra as rodadas
+          rodadas = doc.querySelectorAll('li.round .header-round'); //Adiciona um objeto em cada indice do array
+          _iterator = _createForOfIteratorHelper(rodadas);
+          try {
+            for (_iterator.s(); !(_step = _iterator.n()).done;) {
+              rodada = _step.value;
+              tabela.push({
+                rodada: rodada.innerText
+              });
+            }
+          } catch (err) {
+            _iterator.e(err);
+          } finally {
+            _iterator.f();
+          }
+          _loop = /*#__PURE__*/_regeneratorRuntime().mark(function _loop(i) {
+            var rodadasJogos;
+            return _regeneratorRuntime().wrap(function _loop$(_context2) {
+              while (1) switch (_context2.prev = _context2.next) {
+                case 0:
+                  rodadasJogos = doc.querySelectorAll("#round-".concat(i, " .match"));
+                  if (_typeof(tabela[i - 1].partidas) !== 'object') {
+                    tabela[i - 1].partidas = {};
+                  }
+                  rodadasJogos.forEach(function (value, key) {
+                    var match = {
+                      confronto: value.querySelector('[itemprop="name"]').content,
+                      placar: '',
+                      data: value.querySelector('[itemprop="startDate"]').content.split("-").reverse().join('/'),
+                      local: value.querySelector('[itemprop="location"] [itemprop="name"]').content,
+                      mandante: {
+                        nome: value.querySelector('a.shield.home').title,
+                        abreviacao: value.querySelector('a.shield.home .acronym').innerText,
+                        logo: value.querySelector('a.shield.home img').src,
+                        gols: value.querySelector('strong.goals.home').innerText
+                      },
+                      visitante: {
+                        nome: value.querySelector('a.shield.away').title,
+                        abreviacao: value.querySelector('a.shield.away .acronym').innerText,
+                        logo: value.querySelector('a.shield.away img').src,
+                        gols: value.querySelector('strong.goals.away').innerText
+                      }
+                    };
+
+                    // console.log(value.querySelector('a.shield.home img').src);
+
+                    tabela[i - 1].partidas[key] = {
+                      match: match
+                    };
+                  });
+                case 3:
+                case "end":
+                  return _context2.stop();
+              }
+            }, _loop);
+          });
+          i = 1;
+        case 19:
+          if (!(i < tabela.length + 1)) {
+            _context3.next = 24;
+            break;
+          }
+          return _context3.delegateYield(_loop(i), "t0", 21);
+        case 21:
+          i++;
+          _context3.next = 19;
+          break;
+        case 24:
+          return _context3.abrupt("return", tabela);
+        case 27:
+          _context3.prev = 27;
+          _context3.t1 = _context3["catch"](0);
+          console.error('Erro:', _context3.t1);
+        case 30:
+          ;
+        case 31:
+        case "end":
+          return _context3.stop();
+      }
+    }, _callee2, null, [[0, 27]]);
+  }));
+  return _getData.apply(this, arguments);
+}
+;
+function renderMatches(data) {
+  var round = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  data = data[round - 1];
+  var partidas = data.partidas;
+  var slots = document.querySelectorAll('.box');
+  slots.forEach(function (doc, key) {
+    // console.log(partidas[key]);
+
+    doc.setAttribute('match', partidas[key].match.confronto);
+    doc.querySelector('.local').innerText = partidas[key].match.local;
+    doc.querySelector('.data').innerText = partidas[key].match.data;
+    doc.querySelector('.mandante-name').innerText = partidas[key].match.mandante.abreviacao;
+    doc.querySelector('.mandante-name').setAttribute('fullname', partidas[key].match.mandante.nome);
+    doc.querySelector('.mandante-logo').setAttribute('src', partidas[key].match.mandante.logo);
+    if (partidas[key].match.mandante.gols) {
+      doc.querySelector('.mandante-gols').value = partidas[key].match.mandante.gols;
+      doc.querySelector('.mandante-gols').setAttribute('disabled', '');
+    } else {
+      doc.querySelector('.mandante-gols').value = '';
+      doc.querySelector('.mandante-gols').removeAttribute('disabled', '');
+    }
+    doc.querySelector('.visitante-name').innerText = partidas[key].match.visitante.abreviacao;
+    doc.querySelector('.visitante-name').setAttribute('fullname', partidas[key].match.visitante.nome);
+    doc.querySelector('.visitante-logo').setAttribute('src', partidas[key].match.visitante.logo);
+    if (partidas[key].match.mandante.gols) {
+      doc.querySelector('.visitante-gols').value = partidas[key].match.visitante.gols;
+      doc.querySelector('.visitante-gols').setAttribute('disabled', '');
+    } else {
+      doc.querySelector('.visitante-gols').value = '';
+      doc.querySelector('.visitante-gols').removeAttribute('disabled', '');
+    }
+  });
+}
+
+// -- Listeners --
+
+//Ouve o controlador de paginas de rodadas
+(function listenerPageRound() {
+  var controller = document.querySelector('.controller');
+  controller.addEventListener('click', function (e) {
+    var el = e.target;
+    if (el.classList.contains('prevButton')) {
+      if (round == 1) return;
+      round--;
+      loadMatches();
+    }
+    if (el.classList.contains('nextButton')) {
+      if (round == 38) return;
+      round++;
+      loadMatches();
+    }
+  });
+})();
+
+//Ouve os inputs de palpites dos jogos futuros
+(function listenerImputGols() {
+  document.querySelector('.matches').addEventListener('input', function (e) {
+    var elementoPai = e.target.parentElement;
+    var confronto = elementoPai.parentElement.attributes.match.value;
+    console.log(elementoPai.children);
+    var simulacao = {
+      rodada: document.querySelector('.round').attributes.round.value,
+      confronto: confronto,
+      mandante: elementoPai.children[0].attributes['fullname'].value,
+      mandanteGols: elementoPai.children[2].value,
+      visitante: elementoPai.children[6].attributes['fullname'].value,
+      visitanteGols: elementoPai.children[4].value
+    };
+    console.log(simulacao);
+  });
+})();
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } }, 1);
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/assets/css/style.css":
 /*!************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/assets/css/style.css ***!
@@ -622,6 +899,75 @@ module.exports = styleTagTransform;
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/async module */
+/******/ 	(() => {
+/******/ 		var webpackQueues = typeof Symbol === "function" ? Symbol("webpack queues") : "__webpack_queues__";
+/******/ 		var webpackExports = typeof Symbol === "function" ? Symbol("webpack exports") : "__webpack_exports__";
+/******/ 		var webpackError = typeof Symbol === "function" ? Symbol("webpack error") : "__webpack_error__";
+/******/ 		var resolveQueue = (queue) => {
+/******/ 			if(queue && queue.d < 1) {
+/******/ 				queue.d = 1;
+/******/ 				queue.forEach((fn) => (fn.r--));
+/******/ 				queue.forEach((fn) => (fn.r-- ? fn.r++ : fn()));
+/******/ 			}
+/******/ 		}
+/******/ 		var wrapDeps = (deps) => (deps.map((dep) => {
+/******/ 			if(dep !== null && typeof dep === "object") {
+/******/ 				if(dep[webpackQueues]) return dep;
+/******/ 				if(dep.then) {
+/******/ 					var queue = [];
+/******/ 					queue.d = 0;
+/******/ 					dep.then((r) => {
+/******/ 						obj[webpackExports] = r;
+/******/ 						resolveQueue(queue);
+/******/ 					}, (e) => {
+/******/ 						obj[webpackError] = e;
+/******/ 						resolveQueue(queue);
+/******/ 					});
+/******/ 					var obj = {};
+/******/ 					obj[webpackQueues] = (fn) => (fn(queue));
+/******/ 					return obj;
+/******/ 				}
+/******/ 			}
+/******/ 			var ret = {};
+/******/ 			ret[webpackQueues] = x => {};
+/******/ 			ret[webpackExports] = dep;
+/******/ 			return ret;
+/******/ 		}));
+/******/ 		__webpack_require__.a = (module, body, hasAwait) => {
+/******/ 			var queue;
+/******/ 			hasAwait && ((queue = []).d = -1);
+/******/ 			var depQueues = new Set();
+/******/ 			var exports = module.exports;
+/******/ 			var currentDeps;
+/******/ 			var outerResolve;
+/******/ 			var reject;
+/******/ 			var promise = new Promise((resolve, rej) => {
+/******/ 				reject = rej;
+/******/ 				outerResolve = resolve;
+/******/ 			});
+/******/ 			promise[webpackExports] = exports;
+/******/ 			promise[webpackQueues] = (fn) => (queue && fn(queue), depQueues.forEach(fn), promise["catch"](x => {}));
+/******/ 			module.exports = promise;
+/******/ 			body((deps) => {
+/******/ 				currentDeps = wrapDeps(deps);
+/******/ 				var fn;
+/******/ 				var getResult = () => (currentDeps.map((d) => {
+/******/ 					if(d[webpackError]) throw d[webpackError];
+/******/ 					return d[webpackExports];
+/******/ 				}))
+/******/ 				var promise = new Promise((resolve) => {
+/******/ 					fn = () => (resolve(getResult));
+/******/ 					fn.r = 0;
+/******/ 					var fnQueue = (q) => (q !== queue && !depQueues.has(q) && (depQueues.add(q), q && !q.d && (fn.r++, q.push(fn))));
+/******/ 					currentDeps.map((dep) => (dep[webpackQueues](fnQueue)));
+/******/ 				});
+/******/ 				return fn.r ? promise : getResult();
+/******/ 			}, (err) => ((err ? reject(promise[webpackError] = err) : outerResolve(exports)), resolveQueue(queue)));
+/******/ 			queue && queue.d < 0 && (queue.d = 0);
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
@@ -668,222 +1014,12 @@ module.exports = styleTagTransform;
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
-/*!*******************************!*\
-  !*** ./src/assets/js/main.js ***!
-  \*******************************/
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/style.css */ "./src/assets/css/style.css");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-
-init();
-function init() {
-  return _init.apply(this, arguments);
-}
-function _init() {
-  _init = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    var data;
-    return _regeneratorRuntime().wrap(function _callee$(_context) {
-      while (1) switch (_context.prev = _context.next) {
-        case 0:
-          _context.next = 2;
-          return getData();
-        case 2:
-          data = _context.sent;
-          // console.log(data);
-
-          document.querySelector('.round').innerText = "Rodada " + round;
-          document.querySelector('.round').setAttribute('round', +round);
-          renderMatch(data, round);
-          document.querySelector('.matches').addEventListener('input', function (e) {
-            var elementoPai = e.target.parentElement;
-            var confronto = elementoPai.parentElement.attributes.match.value;
-            var simulacao = {
-              rodada: document.querySelector('.round').attributes.round.value,
-              confronto: confronto,
-              mandanteGols: elementoPai.children[2].value,
-              visitanteGols: elementoPai.children[4].value
-            };
-            console.log(simulacao);
-          });
-        case 7:
-        case "end":
-          return _context.stop();
-      }
-    }, _callee);
-  }));
-  return _init.apply(this, arguments);
-}
-var controller = document.querySelector('.controller');
-var round = 19;
-controller.addEventListener('click', function (e) {
-  var el = e.target;
-  if (el.classList.contains('prevButton')) {
-    if (round == 1) return;
-    round--;
-    init();
-  }
-  if (el.classList.contains('nextButton')) {
-    if (round == 38) return;
-    round++;
-    init();
-  }
-});
-function inputListener() {}
-function getData() {
-  return _getData.apply(this, arguments);
-}
-function _getData() {
-  _getData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-    var tabela, response, texto, parser, doc, leitura, rodadas, _iterator, _step, rodada, _loop, i;
-    return _regeneratorRuntime().wrap(function _callee2$(_context3) {
-      while (1) switch (_context3.prev = _context3.next) {
-        case 0:
-          _context3.prev = 0;
-          tabela = [];
-          _context3.next = 4;
-          return fetch('https://p1.trrsf.com/api/musa-soccer/ms-standings-games-light?idChampionship=1420&idPhase=&language=pt-BR&country=BR&nav=N&timezone=BR');
-        case 4:
-          response = _context3.sent;
-          if (response.ok) {
-            _context3.next = 7;
-            break;
-          }
-          throw new Error('Dados nao encontrados');
-        case 7:
-          ;
-          _context3.next = 10;
-          return response.text();
-        case 10:
-          texto = _context3.sent;
-          parser = new DOMParser();
-          doc = parser.parseFromString(texto, 'text/html');
-          leitura = doc.querySelector('ul.rounds'); // console.log(leitura);
-          //Encontra as rodadas
-          rodadas = doc.querySelectorAll('li.round .header-round'); //Adiciona um objeto em cada indice do array
-          _iterator = _createForOfIteratorHelper(rodadas);
-          try {
-            for (_iterator.s(); !(_step = _iterator.n()).done;) {
-              rodada = _step.value;
-              tabela.push({
-                rodada: rodada.innerText
-              });
-            }
-          } catch (err) {
-            _iterator.e(err);
-          } finally {
-            _iterator.f();
-          }
-          _loop = /*#__PURE__*/_regeneratorRuntime().mark(function _loop(i) {
-            var rodadasJogos;
-            return _regeneratorRuntime().wrap(function _loop$(_context2) {
-              while (1) switch (_context2.prev = _context2.next) {
-                case 0:
-                  rodadasJogos = doc.querySelectorAll("#round-".concat(i, " .match"));
-                  if (_typeof(tabela[i - 1].partidas) !== 'object') {
-                    tabela[i - 1].partidas = {};
-                  }
-                  rodadasJogos.forEach(function (value, key) {
-                    var match = {
-                      confronto: value.querySelector('[itemprop="name"]').content,
-                      placar: '',
-                      data: value.querySelector('[itemprop="startDate"]').content.split("-").reverse().join('/'),
-                      local: value.querySelector('[itemprop="location"] [itemprop="name"]').content,
-                      mandante: {
-                        nome: value.querySelector('a.shield.home').title,
-                        abreviacao: value.querySelector('a.shield.home .acronym').innerText,
-                        logo: value.querySelector('a.shield.home img').src,
-                        gols: value.querySelector('strong.goals.home').innerText
-                      },
-                      visitante: {
-                        nome: value.querySelector('a.shield.away').title,
-                        abreviacao: value.querySelector('a.shield.away .acronym').innerText,
-                        logo: value.querySelector('a.shield.away img').src,
-                        gols: value.querySelector('strong.goals.away').innerText
-                      }
-                    };
-
-                    // console.log(value.querySelector('a.shield.home img').src);
-
-                    tabela[i - 1].partidas[key] = {
-                      match: match
-                    };
-                  });
-                case 3:
-                case "end":
-                  return _context2.stop();
-              }
-            }, _loop);
-          });
-          i = 1;
-        case 19:
-          if (!(i < tabela.length + 1)) {
-            _context3.next = 24;
-            break;
-          }
-          return _context3.delegateYield(_loop(i), "t0", 21);
-        case 21:
-          i++;
-          _context3.next = 19;
-          break;
-        case 24:
-          return _context3.abrupt("return", tabela);
-        case 27:
-          _context3.prev = 27;
-          _context3.t1 = _context3["catch"](0);
-          console.error('Erro:', _context3.t1);
-        case 30:
-          ;
-        case 31:
-        case "end":
-          return _context3.stop();
-      }
-    }, _callee2, null, [[0, 27]]);
-  }));
-  return _getData.apply(this, arguments);
-}
-;
-function renderMatch(data) {
-  var round = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  data = data[round - 1];
-  var partidas = data.partidas;
-  var slots = document.querySelectorAll('.box');
-  slots.forEach(function (doc, key) {
-    // console.log(partidas[key]);
-
-    doc.setAttribute('match', partidas[key].match.confronto);
-    doc.querySelector('.local').innerText = partidas[key].match.local;
-    doc.querySelector('.data').innerText = partidas[key].match.data;
-    doc.querySelector('.mandante-name').innerText = partidas[key].match.mandante.abreviacao;
-    doc.querySelector('.mandante-logo').setAttribute('src', partidas[key].match.mandante.logo);
-    if (partidas[key].match.mandante.gols) {
-      doc.querySelector('.mandante-gols').value = partidas[key].match.mandante.gols;
-      doc.querySelector('.mandante-gols').setAttribute('disabled', '');
-    } else {
-      doc.querySelector('.mandante-gols').value = '';
-      doc.querySelector('.mandante-gols').removeAttribute('disabled', '');
-    }
-    doc.querySelector('.visitante-name').innerText = partidas[key].match.visitante.abreviacao;
-    doc.querySelector('.visitante-logo').setAttribute('src', partidas[key].match.visitante.logo);
-    if (partidas[key].match.mandante.gols) {
-      doc.querySelector('.visitante-gols').value = partidas[key].match.visitante.gols;
-      doc.querySelector('.visitante-gols').setAttribute('disabled', '');
-    } else {
-      doc.querySelector('.visitante-gols').value = '';
-      doc.querySelector('.visitante-gols').removeAttribute('disabled', '');
-    }
-  });
-}
-})();
-
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module used 'module' so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/assets/js/main.js");
+/******/ 	
 /******/ })()
 ;
 //# sourceMappingURL=bundle.js.map
