@@ -1,3 +1,1 @@
-Page de clima consultando API de clima(https://open-meteo.com/) com fetch API
-
-Deploy: (https://omatteus-api-clima.netlify.app)
+Simulador dos jogos do brasileirao criado a partir de uma consulta de pagina, tratando os dados e montando a possibilidade de simular os jogos.
