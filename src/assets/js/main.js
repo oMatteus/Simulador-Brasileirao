@@ -1,13 +1,10 @@
 import '../css/style.css';
 import Tabela from '../js/tabela';
 
-
-//Rodada exibida
-let round = 34;
-
 //Coletando dados
-// const responseAPI = await getData();
-const responseAPI = [
+
+// let responseAPI = await getData();
+let responseAPI = [
     {
         "rodada": "1ª rodada",
         "partidas": {
@@ -7805,6 +7802,9 @@ let dadosGlobais = {
     short: optimizeData(responseAPI)
 };
 
+//Rodada exibida
+let round = currentRound(dadosGlobais);
+
 //Inicia o código para exibição dos jogos
 loadMatches(dadosGlobais)
 
@@ -7815,19 +7815,77 @@ async function loadMatches(dados){
     document.querySelector('.round').innerText = (`Rodada `+round);
     document.querySelector('.round').setAttribute('round',+round);
 
+    // console.log(dados);
     renderMatches(dados.full,round) 
     geraTable(dados.short)
 }
 
 function geraTable(dadosOriginais,DadosSimulados){
     // Clube | PTS | PJ | Vit | Emp | Der | GM| GS | SG
-
-    const dados = new Tabela(dadosOriginais);
-
-    console.log(dados);
+    const tabela = document.querySelector('table');
     
-    const tabela = document.createElement('table');
-    tabela.appendChild(document.createElement('table'))
+    while (tabela.children.length > 1) {
+        tabela.removeChild(tabela.lastChild); // Remove o último filho repetidamente
+    }
+
+    let dados;
+    if(DadosSimulados){
+        dados = new Tabela(dadosOriginais, DadosSimulados)
+    } else{
+        dados = new Tabela(dadosOriginais);
+    }
+
+    const tbody = document.createElement('tbody');
+    
+    dados.classificacao.forEach((value,key)=>{
+
+        const tr = document.createElement('tr');
+    
+        const posicao = document.createElement('td'); 
+        const posicaoText = document.createElement('p'); 
+        posicaoText.innerText = `${key+1}`; posicaoText.style.fontWeight = 'bold'
+        posicao.appendChild(posicaoText);
+        tr.appendChild(posicao);
+
+        for(let time in value){
+            
+            if(time === 'logo'){
+                const td = document.createElement('td');
+                const logo = document.createElement('img'); 
+                logo.setAttribute('src', value[time])
+
+                td.appendChild(logo)
+                tr.appendChild(td)
+                continue
+            };
+
+            const td = document.createElement('td');
+            const text = document.createElement('p'); 
+            text.innerText = value[time]
+
+            if(time === 'nome'){
+                text.style = 'text-align: left;'
+            }
+
+            td.appendChild(text)
+            tr.appendChild(td)
+        }
+
+        tbody.appendChild(tr);
+    })
+
+    tabela.appendChild(tbody);
+
+    (function(){
+        const tbody = document.querySelectorAll('tbody tr');        
+        tbody.forEach((v,k)=>{
+            k+=1;
+            if(k<=4) v.firstChild.style.backgroundColor = 'blue';
+            if(k>=5 && k<=6) v.firstChild.style.backgroundColor = 'orange';
+            if(k>=7 && k<=12) v.firstChild.style.backgroundColor = 'green';
+            if(k>16) v.firstChild.style.backgroundColor = 'red';
+        })
+    })()
 }
 
 function optimizeData(dados){
@@ -7977,31 +8035,65 @@ function renderMatches(data,round=1){
 
 }
 
+function currentRound(dadosGlobais){
+
+    // console.log(dadosGlobais.full);
+    let contador = 0;
+
+    dadosGlobais.full.forEach((v)=>{
+        
+        // console.log(v.partidas);
+        
+        let contadorPartidas = 0;
+        for(let i in v.partidas){
+            // console.log(v.partidas[i].match);
+
+            if(v.partidas[i].match.mandante.gols && v.partidas[i].match.visitante.gols){
+                contadorPartidas++
+            };
+        };
+
+        if(contadorPartidas > 2) contador++;
+    });
+
+    return Number(contador);
+}
+
 
 // -- Listeners --
 
 
 //Ouve o controlador de paginas de rodadas
-(function listenerPageRound(){
+(async function listenerPageRound(){
     const controller = document.querySelector('.controller');
-    controller.addEventListener('click',(e)=>{
+    controller.addEventListener('click', async(e)=>{
     
         const el = e.target;
+        // console.log(e);
     
         if(el.classList.contains('prevButton')){
             if (round == 1) return
             round--
-            loadMatches()
+            loadMatches(dadosGlobais)
         }
     
         if(el.classList.contains('nextButton')){
             if (round == 38) return
             round++
-            loadMatches()
+            loadMatches(dadosGlobais)
+        }
+
+        const botao = event.target.closest('.refreshButton');
+        
+        if(botao){
+            round = currentRound(dadosGlobais)
+            responseAPI = await getData();
+            dadosGlobais.full = responseAPI;
+            dadosGlobais.short = optimizeData(responseAPI);
+            loadMatches(dadosGlobais);
         }
     })
 })();
-
 
 //Ouve os inputs de palpites dos jogos futuros
 (function listenerImputGols(){
@@ -8013,12 +8105,12 @@ function renderMatches(data,round=1){
             rodada: document.querySelector('.round').attributes.round.value,
             confronto: confronto,
             mandante: elementoPai.children[0].attributes['fullname'].value,
-            mandanteGols: elementoPai.children[2].value,
+            mandanteGols: elementoPai.children[2].value? Number(elementoPai.children[2].value) :0,
             visitante: elementoPai.children[6].attributes['fullname'].value,
-            visitanteGols: elementoPai.children[4].value
+            visitanteGols: elementoPai.children[4].value? Number(elementoPai.children[4].value) : 0
         };
-    
-        console.log(simulacao);
+        //console.log(simulacao);
+        geraTable(dadosGlobais.short,simulacao)
     })
 })();
 

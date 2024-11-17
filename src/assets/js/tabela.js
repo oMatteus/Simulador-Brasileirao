@@ -1,17 +1,15 @@
-import { validate } from "schema-utils";
-
 export default class Tabela{
 
     constructor(dadosOriginais,DadosSimulados=null){
 
         // console.log(dadosOriginais);
-
-        this.classificacao = this.criaTabela(dadosOriginais)
-
-        dadosOriginais.forEach(value => {
-            // console.log(value);
-        });
         
+        if(DadosSimulados){
+            this.classificacao = this.atualizaTabela(dadosOriginais,DadosSimulados);
+            return
+        }
+
+        this.classificacao = this.criaTabela(dadosOriginais);
     }
 
     criaTabela(dadosOriginais){
@@ -20,10 +18,10 @@ export default class Tabela{
         dadosOriginais.forEach((value,key) => {
             if(key <= 9){
                 // console.log(value);
-                    // Clube | PTS | PJ | Vit | Emp | Der | GM| GS | SG
-
+               
                 times[value.mandante] = {
-                    logo: '',
+                    logo: value.mandateLogo,
+                    nome: value.mandante,
                     pontos: 0,
                     partidasJogadas: 0,
                     vitorias: 0,
@@ -34,7 +32,8 @@ export default class Tabela{
                     saldoGols: 0,
                 };
                 times[value.visitante] = {
-                    logo: '',
+                    logo: value.visitanteLogo,
+                    nome : value.visitante,
                     pontos: 0,
                     partidasJogadas: 0,
                     vitorias: 0,
@@ -46,6 +45,8 @@ export default class Tabela{
                 };
             }
         });
+
+        // Clube | PTS | PJ | Vit | Emp | Der | GM| GS | SG
         // console.log(times);
         return this.ordenaTabela(times,dadosOriginais)
     }   
@@ -104,20 +105,32 @@ export default class Tabela{
         let ordemClassificacao = [];
 
         for(let time in tabela){
-            tabela[time].nome = time;
             ordemClassificacao.push(tabela[time])
         }
 
         ordemClassificacao.sort((a,b)=>{
             if (b.pontos !== a.pontos) {
-                return b.pontos - a.pontos; // Ordena por pontos (decrescente)
+                return b.pontos - a.pontos;
             }
             if (b.vitorias !== a.vitorias) {
-                return b.vitorias - a.vitorias; // Ordena por vitórias (decrescente)
+                return b.vitorias - a.vitorias;
             }
             return b.saldoGols - a.saldoGols;
         })
-        console.log(ordemClassificacao);
+
+        return ordemClassificacao;
+    }
+
+    atualizaTabela(dadosOriginais,DadosSimulados){
+        
+        const newDados = [];
+
+        const att = dadosOriginais.findIndex(partida => partida.confronto === DadosSimulados.confronto);
+        dadosOriginais[att].mandanteGols = DadosSimulados.mandanteGols;
+        dadosOriginais[att].visitanteGols = DadosSimulados.visitanteGols;
+
+        // console.log(dadosOriginais[att], 'dado bruto atualizado');
+        return this.criaTabela(dadosOriginais)
     }
 
 };
