@@ -129,6 +129,7 @@ table{
     & img{
         width: 25px;
         margin-top: 6px;
+        padding-left: 6px;
     }
 }
 
