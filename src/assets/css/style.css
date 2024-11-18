@@ -47,6 +47,20 @@ p{
 
 .controller{
     margin-bottom: 1rem;
+    align-items: center;
+}
+
+.buttons{
+    display: flex; gap: 3px;
+
+    margin-bottom: 1px;
+    & button{
+        height: 3rem;
+        border: 1px solid black;
+    };
+
+    & .refreshButton{
+    }
 }
 
 .matches{
@@ -132,8 +146,6 @@ table{
         padding-left: 6px;
     }
 }
-
-
 
 .loader-circle {
     width: 100px; height: 100px;
