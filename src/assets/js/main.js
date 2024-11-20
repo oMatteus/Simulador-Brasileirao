@@ -248,22 +248,24 @@ function currentRound(dadosGlobais){
     // console.log(dadosGlobais.full);
     let contador = 0;
 
-    dadosGlobais.full.forEach((v)=>{
+    dadosGlobais.full.forEach((rodadas)=>{
         
-        // console.log(v.partidas);
+        // console.log(rodadas.partidas);
         
         let contadorPartidas = 0;
-        for(let i in v.partidas){
-            // console.log(v.partidas[i].match);
+        for(let i in rodadas.partidas){
+            // console.log(rodadas.partidas[i].match);
 
-            if(v.partidas[i].match.mandante.gols && v.partidas[i].match.visitante.gols){
+            if(rodadas.partidas[i].match.mandante.gols && rodadas.partidas[i].match.visitante.gols){
                 contadorPartidas++
             };
         };
+        // console.log(contadorPartidas);
 
-        if(contadorPartidas > 2) contador++;
+        if(contadorPartidas >= 1) contador++;
     });
 
+    // console.log(contador, 'Rodada');
     return Number(contador);
 }
 
