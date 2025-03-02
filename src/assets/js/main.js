@@ -1,5 +1,6 @@
 import '../css/style.css';
 import Tabela from '../js/tabela';
+const API_URL = process.env.API_URL;
 
 //Coletando dados
 
@@ -132,7 +133,7 @@ async function getData(){
 
         const tabela = []
 
-        const response = await fetch('https://p1.trrsf.com/api/musa-soccer/ms-standings-games-light?idChampionship=1420&idPhase=&language=pt-BR&country=BR&nav=N&timezone=BR');
+        const response = await fetch(API_URL);
 
         if (!response.ok) {
             throw new Error('Dados nao encontrados');
@@ -201,7 +202,9 @@ async function getData(){
 
 function renderMatches(data,round=1){
 
-    data = data[round-1];
+    // data = data[round-1];
+    data[round-1] ? data = data[round-1] : data = data[round]
+
     const partidas = data.partidas
     const slots = document.querySelectorAll('.box');
 
@@ -246,7 +249,7 @@ function renderMatches(data,round=1){
 function currentRound(dadosGlobais){
 
     // console.log(dadosGlobais.full);
-    let contador = 0;
+    let contador = 1;
 
     dadosGlobais.full.forEach((rodadas)=>{
         

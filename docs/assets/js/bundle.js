@@ -21,6 +21,7 @@ function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 
 
+var API_URL = "https://p1.trrsf.com/api/musa-soccer/ms-standings-games-light?idChampionship=1436&idPhase=&language=pt-BR&country=BR&nav=N&timezone=BR";
 
 //Coletando dados
 
@@ -151,7 +152,7 @@ function _getData() {
           _context5.prev = 0;
           tabela = [];
           _context5.next = 4;
-          return fetch('https://p1.trrsf.com/api/musa-soccer/ms-standings-games-light?idChampionship=1420&idPhase=&language=pt-BR&country=BR&nav=N&timezone=BR');
+          return fetch(API_URL);
         case 4:
           response = _context5.sent;
           if (response.ok) {
@@ -254,7 +255,8 @@ function _getData() {
 ;
 function renderMatches(data) {
   var round = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  data = data[round - 1];
+  // data = data[round-1];
+  data[round - 1] ? data = data[round - 1] : data = data[round];
   var partidas = data.partidas;
   var slots = document.querySelectorAll('.box');
   slots.forEach(function (doc, key) {
@@ -287,7 +289,7 @@ function renderMatches(data) {
 }
 function currentRound(dadosGlobais) {
   // console.log(dadosGlobais.full);
-  var contador = 0;
+  var contador = 1;
   dadosGlobais.full.forEach(function (rodadas) {
     // console.log(rodadas.partidas);
 
